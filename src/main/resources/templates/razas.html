@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Razas</title>
+
+    <!-- Bootstrap 5 -->
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <!-- Tema propio -->
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- DataTables Bootstrap 5 (CDN) -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.4.1/css/buttons.bootstrap5.min.css">
+</head>
+
+<body>
+<div class="admin-shell">
+    <div class="sidebar-backdrop" data-sidebar-close></div>
+
+    <!-- ===== SIDEBAR ===== -->
+    <aside class="admin-sidebar" id="adminSidebar" aria-label="Navegación principal">
+        <div class="sidebar-header">
+            <a class="brand-mark" href="#" aria-label="Mascotas dashboard">
+                <span class="brand-icon"><i class="bi bi-grid-1x2-fill" aria-hidden="true"></i></span>
+                <span class="brand-copy">
+                    <span class="brand-title">Mascotas</span>
+                    <span class="brand-subtitle">Admin Panel</span>
+                </span>
+            </a>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a class="nav-link" href="/razas">
+                <span class="nav-icon"><i class="bi bi-journal" aria-hidden="true"></i></span>
+                <span class="nav-text">Razas</span>
+            </a>
+            <a class="nav-link active" href="/mascotas" aria-current="page">
+                <span class="nav-icon"><i class="bi bi-suit-heart" aria-hidden="true"></i></span>
+                <span class="nav-text">Mascotas</span>
+            </a>
+        </nav>
+
+
+
+
+        <div class="sidebar-footer">
+            <span class="status-dot"></span>
+            <span class="sidebar-footer-text">Sistema funcionando correctamente</span>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN ===== -->
+    <div class="admin-main">
+
+        <!-- NAVBAR -->
+        <nav class="navbar admin-navbar navbar-expand bg-white">
+            <div class="container-fluid px-3 px-lg-4">
+                <button class="sidebar-toggle" type="button" data-sidebar-toggle
+                        aria-controls="adminSidebar" aria-expanded="true" aria-label="Toggle sidebar">
+                    <span></span><span></span><span></span>
+                </button>
+                <div class="navbar-actions ms-auto">
+                    <button class="icon-button theme-toggle" type="button" data-theme-toggle
+                            aria-label="Cambiar tema" title="Cambiar tema">
+                        <i class="bi bi-moon-stars" data-theme-icon aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- CONTENIDO -->
+        <main class="dashboard-content">
+            <div class="container-fluid px-3 px-lg-4 py-4">
+
+                <div class="page-heading">
+                    <div class="page-heading-copy">
+                        <span class="page-icon"><i class="bi bi-tags" aria-hidden="true"></i></span>
+                        <div>
+                            <p class="eyebrow mb-1">Gestión</p>
+                            <h1 class="h3 mb-1">Razas</h1>
+                            <p class="text-muted mb-0">Administra el catálogo de razas del sistema.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <section class="panel">
+                    <div class="panel-header">
+                        <div>
+                            <h2 class="h5 mb-1 section-title">
+                                <i class="bi bi-tags" aria-hidden="true"></i>
+                                <span>Mantenimiento de Razas</span>
+                            </h2>
+                            <p class="text-muted mb-0">Tabla de registro, edición y eliminación de razas.</p>
+                        </div>
+                        <button type="button" class="btn btn-success btn-sm"
+                                data-bs-toggle="modal" data-bs-target="#modal-agregar">
+                            <i class="bi bi-plus-lg me-1"></i> Agregar
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="example1" class="table table-bordered table-striped align-middle mb-0">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                            <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th class="text-center">Acciones</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+
+        <footer class="admin-footer">
+            <div class="container-fluid px-3 px-lg-4">
+                <span>Copyright &copy; 2026 Mascotas. Todos los derechos reservados.</span>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<!-- ===== MODALES ===== -->
+
+<!-- Modal Agregar -->
+<div class="modal fade" id="modal-agregar" tabindex="-1" aria-labelledby="labelAgregar" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="labelAgregar">Agregar raza</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nombre" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" placeholder="Nombre de la raza">
+                    </div>
+                    <div class="col-12">
+                        <label for="descripcion" class="form-label">Descripción:</label>
+                        <textarea class="form-control" id="descripcion" rows="3"
+                                  placeholder="Descripción de la raza"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success" onclick="guardar();">Guardar raza</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Actualizar -->
+<div class="modal fade" id="modal-update" tabindex="-1" aria-labelledby="labelUpdate" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="labelUpdate">Actualizar raza</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" value="0" id="id-update">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nombre-update" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre-update" placeholder="Nombre de la raza">
+                    </div>
+                    <div class="col-12">
+                        <label for="descripcion-update" class="form-label">Descripción:</label>
+                        <textarea class="form-control" id="descripcion-update" rows="3"
+                                  placeholder="Descripción de la raza"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary" onclick="actualizar();">Actualizar raza</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Eliminar -->
+<div class="modal fade" id="modal-delete" tabindex="-1" aria-labelledby="labelDelete" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h4 class="modal-title" id="labelDelete">Eliminar raza</h4>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-muted mb-3">¿Estás seguro de que deseas eliminar esta raza? Esta acción no se puede deshacer.</p>
+                <input type="hidden" value="0" id="id-eliminar">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="nombre-delete" class="form-label">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre-delete" readonly>
+                    </div>
+                    <div class="col-12">
+                        <label for="descripcion-delete" class="form-label">Descripción:</label>
+                        <textarea class="form-control" id="descripcion-delete" rows="2" readonly></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer justify-content-between">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" onclick="eliminar();">Eliminar raza</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<!-- 1. jQuery primero (requerido por $.ajax y DataTables) -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- 2. Bootstrap 5 -->
+<script src="/assets/js/bootstrap.bundle.min.js"></script>
+<!-- 3. DataTables -->
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.bootstrap5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/2.4.1/js/buttons.print.min.js"></script>
+<!-- 4. Sidebar / tema oscuro -->
+<script src="/assets/js/main.js"></script>
+<!-- 5. CRUD propio — va ANTES del bloque de inicialización -->
+<script src="/assets/js/jspropios/crud-razas.js"></script>
+<!-- 6. Inicializar DataTable y llamar listar() -->
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true,
+            "lengthChange": false,
+            "autoWidth": false,
+            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+
+        listar();
+    });
+</script>
+
+</body>
+</html>
